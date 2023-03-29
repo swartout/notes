@@ -3,8 +3,7 @@ description: Notes from the UW
 theme: just-the-docs
 author: Carter Swartout
 
-url: https://cswartout.com
-baseurl: /notes
+url: https://cswartout.com/notes
 
-aux_links:
-  Template Repository: https://github.com/just-the-docs/just-the-docs-template
+color_scheme: dark
+search_enabled: true
