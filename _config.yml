@@ -1,8 +1,10 @@
-title: Just the Docs Template
-description: A starter template for a Jeykll site using the Just the Docs theme!
+title: Notes
+description: Notes from the UW
 theme: just-the-docs
+author: Carter Swartout
 
-url: https://just-the-docs.github.io
+url: https://cswartout.com
+baseurl: /notes
 
 aux_links:
   Template Repository: https://github.com/just-the-docs/just-the-docs-template
