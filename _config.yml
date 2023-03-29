@@ -4,6 +4,10 @@ theme: just-the-docs
 author: Carter Swartout
 
 url: https://cswartout.com/notes
+# favicon_ico: "/assets/images/favicon.ico" # TODO
 
 color_scheme: dark
-search_enabled: true
+
+aux_links:
+    "Carter's Website":
+        - "//cswartout.com"
