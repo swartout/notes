@@ -11,9 +11,9 @@ parent: STAT
 - $S$ is sample space
 - $x \in S$ is an outcome
 - Examples:
-    1. Coin toss: $S = \{0, 1\}$
-    2. Die roll: $S = \{0, \dots, 6\}$
-    3. Stopping time: $S = \{0^{*}1\}$
+    1. Coin toss: $S = \lbrace 0, 1 \rbrace$
+    2. Die roll: $S = \lbrace 0, \dots, 6 \rbrace$
+    3. Stopping time: $S = \lbrace 0^{*}1 \rbrace$
 - Event: $E \subseteq S$
     - $2^{S} \equiv \lbrace E \mid E \subseteq S \rbrace \equiv P(S)$
         - $2^{S}$ stands for the power set of $S$
