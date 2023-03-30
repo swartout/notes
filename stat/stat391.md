@@ -15,7 +15,7 @@ parent: STAT
     2. Die roll: $S = \{0, \dots, 6\}$
     3. Stopping time: $S = \{0^{*}1\}$
 - Event: $E \subseteq S$
-    - $2^{S} \equiv \{E | E \subseteq S\} \equiv P(S)$
+    - $2^{S} \equiv \lbrace E \mid E \subseteq S \rbrace \equiv P(S)$
         - $2^{S}$ stands for the power set of $S$
     - We use events because measure theory requires it
     - We use events because we (often) don't care about $Prob(x)$ alone

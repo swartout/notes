@@ -8,6 +8,11 @@ url: https://cswartout.com/notes
 
 color_scheme: dark
 
+# LaTeX rendering via "katex" (KaTeX, default) or "mathjax" (MathJax) or "none" / "off" (NO rendering)
+latex: katex
+compress_html:
+    blanklines: true
+
 aux_links:
     "Carter's Website":
         - "//cswartout.com"
