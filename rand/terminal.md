@@ -65,4 +65,23 @@ References: [TMUX Guide](https://tmuxguide.readthedocs.io/en/latest/tmux/tmux.ht
         - `:badd <filename>` adds `<filename>` to the buffer list
         - `:bdelete <ID_or_name>` deletes *all* buffers in `<ID_or_name>`
         - `:%bdelete` deletes all buffers
-
+- Windows: where vim can display the content of a buffer
+    - To create a new window use `:new`
+        - `CTRL-W s` to split the current window horizontally
+        - `CTRL-W v` to split the current window vertically
+        - `CTRL-W n` to split the current window horizontally *and* edit a new file
+        - `CTRL-W ^` to split the current window with the alternate file (buffer with `#` indicator)
+        - `<buffer_ID>CTRL-W ^` split current window with `<buffer_ID>`
+    - To switch between windows:
+        - `CTRL-W CTRL-W` to switch to last (alternate?) window
+        - `CTRL-<hjkl>` to move left, down, up, or right (remap)
+    - To rotate windows:
+        - `CTRL-W r` rotate the windows
+        - `CTRL-W x` exchange with next window
+    - To resize windows:
+        - `CTRL-W =` resize windows to fit on screen with the same size
+        - `CTRL-W +` increase window height
+        - `CTRL-W -` decrease window height
+        - `CTRL-W <` decrease window width
+        - `CTRL-W >` increase window width
+    - Exit windows with `:q` or `:q!` (these commands don't quit vim, but quit a window!)
