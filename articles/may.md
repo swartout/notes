@@ -62,7 +62,7 @@ parent: Articles
     - $C = C_{forward} + C_{backward}$
     - $C_{forward} \approx 2PD$
     - $C_{backward} \approx 4PD$
-    - $\tau$ is the aggregate throughput of hardware setup, $\tau = (\text{No. GPUs) \times (\text{Actual FLOPs/GPU)$ (in FLOPs)
+    - $\tau$ is the aggregate throughput of hardware setup, $\tau = (\text{No. GPUs) \times (\text{Actual FLOPs/GPU}$ (in FLOPs)
     - $T$ is the time spent training the model in seconds
     - $P$ is the number of parameters in the transformer model
     - $D$ is the dataset size in tokens
@@ -71,7 +71,7 @@ parent: Articles
     - GPU-hours (number of GPUs multiplied by the number of hours)
     - PetaFLOP-days $10^{15} \times 24 \times 3600$ total floating point operations (scaling papers)
 - Parameter vs Dataset tradeoffs:
-    - Compute optimal language models reccommend a dataset about $frac{1}{20}$ the size of the number of parameters
+    - Compute optimal language models reccommend a dataset about $\frac{1}{20}$ the size of the number of parameters
     - In practice, do not train a model with less than 200B tokens from scratch
         - Find what inference cost is accessible, what compute available, then train the largest model possible
 - Compute costs:
@@ -93,6 +93,7 @@ parent: Articles
         - fp32, momentum with 4 bytes per param
     - $\text{memory}_{\text{gradients}}$ typically is the model dtype, so 2 or 4 bytes per param
     - Read the article for more on activation recomputation/checkpointing
+        - $C \approx 8ND$ possibly with checkpointing
     - $\text{Total Memory}_{Training} = \text{Model Memory} + \text{Optimizer Memory} + \text{Activation Memory} + \text{Gradient Memory}$
     - Read the article for more on sharded optimizers and 3D paralleism
 

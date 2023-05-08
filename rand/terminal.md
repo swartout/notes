@@ -85,3 +85,5 @@ References: [TMUX Guide](https://tmuxguide.readthedocs.io/en/latest/tmux/tmux.ht
         - `CTRL-W <` decrease window width
         - `CTRL-W >` increase window width
     - Exit windows with `:q` or `:q!` (these commands don't quit vim, but quit a window!)
+
+---
