@@ -10,6 +10,8 @@ parent: Articles
 
 ## [Go smol or go home](https://www.harmdevries.com/post/model-size-vs-compute-overhead/)
 
+*Scaling laws and compressing model size*
+
 - Notation:
     - $N$: number of model parameters
     - $D$: number of training tokens
@@ -47,5 +49,51 @@ parent: Articles
     - Chinchilla laws might not be accurate for extrapolation
     - Smaller models might achieve the same perplexity, but less emergent ability
     - Training smaller models for longer might have parallelization issues
+
+---
+
+## [Transformer Math 101](https://blog.eleuther.ai/transformer-math/)
+
+*Basic equations about transformer language models, especially with regards to training*
+
+- Compute Requirements:
+    - $C \approx \tau T = 6PD$
+    - $C$ is compute required to train the model in total FLOP
+    - $C = C_{forward} + C_{backward}$
+    - $C_{forward} \approx 2PD$
+    - $C_{backward} \approx 4PD$
+    - $\tau$ is the aggregate throughput of hardware setup, $\tau = (\text{No. GPUs) \times (\text{Actual FLOPs/GPU)$ (in FLOPs)
+    - $T$ is the time spent training the model in seconds
+    - $P$ is the number of parameters in the transformer model
+    - $D$ is the dataset size in tokens
+- Common units of $C$:
+    - FLOP-seconds
+    - GPU-hours (number of GPUs multiplied by the number of hours)
+    - PetaFLOP-days $10^{15} \times 24 \times 3600$ total floating point operations (scaling papers)
+- Parameter vs Dataset tradeoffs:
+    - Compute optimal language models reccommend a dataset about $frac{1}{20}$ the size of the number of parameters
+    - In practice, do not train a model with less than 200B tokens from scratch
+        - Find what inference cost is accessible, what compute available, then train the largest model possible
+- Compute costs:
+    - GPT-NeoX gets 150 TFLOPs/A100 with normal attention, 180 TFLOPs/s/A100 with flash attention (similar to other frameworks)
+    - Assume minimum 120 TFLOP/s/A100, if lower than 115 there's probably something wrong
+    - Possible to achieve linear or sublinear scaling across parallel dimensions with good interconnect
+- Memory:
+    - int8: 1 byte per param, fp16 and bf16: 2 bytes per param, fp32: 4 bytes per param
+    - Small overhead for model memory usage, typically $\leq 20\%$ and irrelevant
+    - Inference also has an often negligible overhead
+    - Heuristic for inference memory requirement is: $\text{Total Memory}_{\text{Inference}} \approx 1.2 \times \text{Model Memory}$
+- Training memory:
+    - Mixed-precision training requires storing an additional two bytes per param ($\text{memory}_{\text{model}}$)
+    - AdamW, 12 bytes per param:
+        - fp32, momentum, variance each 4 bytes per param
+    - 8-bit optimizers, 6 bytes per param:
+        - fp32: 4 bytes, momentum 1 byte, variance: 1 byte
+    - SGD-like optimizer with momentum, 8 bytes per param:
+        - fp32, momentum with 4 bytes per param
+    - $\text{memory}_{\text{gradients}}$ typically is the model dtype, so 2 or 4 bytes per param
+    - Read the article for more on activation recomputation/checkpointing
+    - $\text{Total Memory}_{Training} = \text{Model Memory} + \text{Optimizer Memory} + \text{Activation Memory} + \text{Gradient Memory}$
+    - Read the article for more on sharded optimizers and 3D paralleism
 
 ---
