@@ -62,7 +62,7 @@ parent: Articles
     - $C = C_{forward} + C_{backward}$
     - $C_{forward} \approx 2PD$
     - $C_{backward} \approx 4PD$
-    - $\tau$ is the aggregate throughput of hardware setup, $\tau = (\text{No. GPUs) \times (\text{Actual FLOPs/GPU}$ (in FLOPs)
+    - $\tau$ is the aggregate throughput of hardware setup, $\tau = (\text{No. GPUs} \times (\text{Actual FLOPs/GPU}$ (in FLOPs)
     - $T$ is the time spent training the model in seconds
     - $P$ is the number of parameters in the transformer model
     - $D$ is the dataset size in tokens
@@ -96,5 +96,32 @@ parent: Articles
         - $C \approx 8ND$ possibly with checkpointing
     - $\text{Total Memory}_{Training} = \text{Model Memory} + \text{Optimizer Memory} + \text{Activation Memory} + \text{Gradient Memory}$
     - Read the article for more on sharded optimizers and 3D paralleism
+
+---
+
+## [PEP 484](https://peps.python.org/pep-0484/)
+
+*Type annotations for Python*
+
+- Use the decorator `@no_type_check` to avoid type checking
+- Do not annotate `self` or `cls`, but do annotate return for `__init__`
+- Type hints can be:
+    - Built in classes
+    - Abstract base classes
+    - Types from the `types` module
+    - User defined classes
+    - `None`, `Any`, `Tuple`, `Callable`, ABCs and stand-ins from `typing`
+- Capitalize type alias names
+- Callback type-alias: `Callable[[Arg1Type, Arg2Type], ReturnType]`
+    - Use ellipsis (`...`) to substitute a type hint
+- Abstract base classes are used to signify object types in containers
+    - For example: `Mapping[str, int]`
+- Generics can be parameterized using `typing.TypeVar`, i.e. `T = TypeVar('T')`
+- Create generic classes by inheriting `Generic[T]`
+- `int` subclasses `float`
+- Using `Union[Type1, Type2]` superclasses `Type1` and `Type2` such that either can be used
+    - `None` is invalid by default, use `Union[Type1, None]` to make optional
+    - `Optional[Type1]` works the same way
+- `Any` represents any type with all possible values and methods
 
 ---
