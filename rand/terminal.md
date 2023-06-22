@@ -61,6 +61,7 @@ References: [TMUX Guide](https://tmuxguide.readthedocs.io/en/latest/tmux/tmux.ht
         - `:bl` to move to last buffer
         - `Ctrl-^` to switch to alternate buffer
         - Run command on all buffers: `:bufdo <command>`
+        - Use `:b <name>` to switch to buffer with name using partial name matching
     - Create and delete buffers:
         - `:badd <filename>` adds `<filename>` to the buffer list
         - `:bdelete <ID_or_name>` deletes *all* buffers in `<ID_or_name>`
@@ -85,5 +86,22 @@ References: [TMUX Guide](https://tmuxguide.readthedocs.io/en/latest/tmux/tmux.ht
         - `CTRL-W <` decrease window width
         - `CTRL-W >` increase window width
     - Exit windows with `:q` or `:q!` (these commands don't quit vim, but quit a window!)
+- To edit a new file use `:e`
 
 ---
+
+## Lua + Neovim
+
+- [Lua basics:](https://learnxinyminutes.com/docs/lua/) honestly pretty similar to JS/Python
+- comments are `--`, multi-line is two brackets `[[comment here]]`
+- use `if condition then` for if statements
+    - finish if statements with `end`
+- blocks use `do/end`
+- not equals is: `~=`
+- finish functions with `end` after `return`
+- most everything else is either unimportant for what I care about right now, or something I'll google
+
+- [Neovim lua config:](https://vonheikemen.github.io/devlog/tools/build-your-first-lua-config-for-neovim/)
+- To edit global settings, use the global variable/module `vim`
+    - i.e. `vim.opt.option_name = value`
+- `lua/plugins.lua` contains the config file for loading plugins
