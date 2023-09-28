@@ -90,8 +90,31 @@ parent: Rand
     - Checkpoint jobs are stopped and re-queued every 4 hours
     - They might be stopped without any notice
     - This means that jobs should be able to stop and resume on demand
-- There are multiple ways to get software on Hyak, modules, conda, or otherwise
-    - I'll just try python venvs
 - For Jupyter Notebooks, select a random port number between 4096 and 16384
     - Set the flag `--ip 0.0.0.0`
     - Make another ssh session and port-forward in
+- We can view the available modules for software using `module avail`
+    - This *cannot* be done from a login node
+- `module` commands:
+    - `module avail`
+    - `module list`
+    - `module load <software>`
+    - `module unload <software>`
+    - `module purge` (unload all software)
+- These modules are from "Lmod" and "Environment Modules"
+- **Apptainer** is the preferred container for `klone`
+    - They are only one file, preventing inode problems common with conda!
+- To create an Apptainer:
+    1. Start an interactive session
+    2. Load the apptainer module `module load apptainer`
+    3. Create definition file: see documentation
+    4. Build the apptainer container from the definition file
+    5. Run the apptainer binary: `apptainer exec <container> <command>`
+- In practice, we can typically use pre-built containers    
+- Common container app stores:
+    - Sylabs.io Cloud Library
+    - Docker Hub
+    - Biocontainers.pro
+    - Nvidia GPU Cloud (NGC)
+- Modules can also be loaded using apptainer
+- From what I understand, venv is okay to use instead of (mini)conda
